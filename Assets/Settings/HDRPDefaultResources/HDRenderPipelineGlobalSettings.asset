@@ -195,6 +195,7 @@ MonoBehaviour:
     m_RuntimeSettings:
       m_List:
       - rid: 8556427327610290176
+      - rid: 8556427327610290178
       - rid: 8556427327610290180
       - rid: 4291017229557301248
       - rid: 4291017229557301249
@@ -269,7 +270,7 @@ MonoBehaviour:
         m_Camera:
           bitDatas:
             data1: 72198260625768269
-            data2: 13799031439032811544
+            data2: 13799031440106553368
           lodBias: 1
           lodBiasMode: 0
           lodBiasQualityLevel: 0
