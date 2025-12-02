@@ -6,7 +6,7 @@
 // 製作者 : 清水駿希
 // 
 // ============================================
-public readonly struct GamePlayInputSnapshot
+public readonly struct GamePlayInputState
 {
     public float Handle { get; }
     public float Accelerator { get; }
@@ -14,13 +14,13 @@ public readonly struct GamePlayInputSnapshot
     public bool Boost { get; }
     public bool CameraView { get; }
 
-    public GamePlayInputSnapshot(float handle, float accelerator, float brake, bool boost, bool cameraView)
+    public GamePlayInputState(float handle, float accelerator, float brake, bool boost, bool cameraView)
     {
-        Handle = handle;
+        Handle      = handle;
         Accelerator = accelerator;
-        Brake = brake;
-        Boost = boost;
-        CameraView = cameraView;
+        Brake       = brake;
+        Boost       = boost;
+        CameraView  = cameraView;
     }
 }
 
@@ -39,7 +39,7 @@ public enum UiInputActionID
 public interface IInputDevice
 {
     // 入力値の取得
-    public GamePlayInputSnapshot GetInput { get; }
+    public GamePlayInputState GetInput { get; }
     // 入力状態を更新する
     public void GamePlayInputUpdate();
     // UI用の入力アクションが現在押されているかを判定する

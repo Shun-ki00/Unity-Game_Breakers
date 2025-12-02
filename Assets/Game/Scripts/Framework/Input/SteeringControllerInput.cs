@@ -9,9 +9,9 @@
 
 public class SteeringControllerInput : IInputDevice
 {
-    public GamePlayInputSnapshot GetInput { get { return _gamePlayInputSnapshot; } }
+    public GamePlayInputState GetInput { get { return _gamePlayInputSnapshot; } }
 
-    private GamePlayInputSnapshot _gamePlayInputSnapshot;
+    private GamePlayInputState _gamePlayInputSnapshot;
     private SteeringController _steeringController;
 
     /// <summary>
@@ -27,7 +27,7 @@ public class SteeringControllerInput : IInputDevice
         if (_steeringController.GetState() == false) return;
 
         // 毎フレームで入力を集約して Snapshot を作成
-        var snapshot = new GamePlayInputSnapshot(
+        var snapshot = new GamePlayInputState(
             handle: _steeringController.GetSteeringPosition() * -1.0f,
             accelerator: _steeringController.GetAcceleratorPosition(),
             brake: _steeringController.GetBrakePosition(),
@@ -43,52 +43,63 @@ public class SteeringControllerInput : IInputDevice
     /// </summary>
     public bool IsPressed(UiInputActionID action)
     {
+        bool pressed = false;
+
         switch (action)
         {
-            case UiInputActionID.None:
-                break;
             case UiInputActionID.RIGHT:
+                pressed = _steeringController.GetPOVIsPressed(SteeringController.POVDirection.RIGHT);
                 break;
             case UiInputActionID.LEFT:
+                pressed = _steeringController.GetPOVIsPressed(SteeringController.POVDirection.LEFT);
                 break;
             case UiInputActionID.UP:
+                pressed = _steeringController.GetPOVIsPressed(SteeringController.POVDirection.UP);
                 break;
             case UiInputActionID.DOWN:
+                pressed = _steeringController.GetPOVIsPressed(SteeringController.POVDirection.DOWN);
                 break;
             case UiInputActionID.ESC:
+                pressed = _steeringController.GetButtonIsPressed(SteeringController.ButtonID.OPTIONS);
                 break;
+
+            case UiInputActionID.None:
             default:
                 break;
-
         }
 
-        return false;
+        return pressed;
     }
     /// <summary>
     /// UI用の入力アクションが今フレームで押されたかを判定する
     /// </summary>
     public bool WasPressedThisFrame(UiInputActionID action)
     {
+        bool pressed = false;
+
         switch (action)
         {
-            case UiInputActionID.None:
-                break;
             case UiInputActionID.RIGHT:
+                pressed = _steeringController.GetPOVWasPressedThisFrame(SteeringController.POVDirection.RIGHT);
                 break;
             case UiInputActionID.LEFT:
+                pressed = _steeringController.GetPOVWasPressedThisFrame(SteeringController.POVDirection.LEFT);
                 break;
             case UiInputActionID.UP:
+                pressed = _steeringController.GetPOVWasPressedThisFrame(SteeringController.POVDirection.UP);
                 break;
             case UiInputActionID.DOWN:
+                pressed = _steeringController.GetPOVWasPressedThisFrame(SteeringController.POVDirection.DOWN);
                 break;
             case UiInputActionID.ESC:
+                pressed = _steeringController.GetButtonWasPressedThisFrame(SteeringController.ButtonID.OPTIONS);
                 break;
+            case UiInputActionID.None:
             default:
                 break;
-
         }
 
-        return false;
+        return pressed;
     }
 }
 

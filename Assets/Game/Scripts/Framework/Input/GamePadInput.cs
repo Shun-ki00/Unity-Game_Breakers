@@ -10,27 +10,27 @@ using UnityEngine.InputSystem;
 
 public class GamePadInput : IInputDevice
 {
-    public GamePlayInputSnapshot GetInput { get { return _gamePlayInputSnapshot; } }
+    /// <summary> ゲームパッドの入力値を取得する </summary>
+    public GamePlayInputState GetInput { get { return _gamePlayInputSnapshot; } }
 
-    private Gamepad _gamepad;
-    private GamePlayInputSnapshot _gamePlayInputSnapshot;
+    private Gamepad _currentGamepadState = null;
+    private GamePlayInputState _gamePlayInputSnapshot;
 
-    /// <summary>
-    /// 入力状態を更新する
-    /// </summary>
+
+    /// <summary> 入力状態を更新する </summary>
     public void GamePlayInputUpdate()
     {
-        _gamepad = Gamepad.current;
+        _currentGamepadState = Gamepad.current;
 
-        if (_gamepad == null ) return;
+        if (_currentGamepadState == null ) return;
 
         // 毎フレームで入力を集約して Snapshot を作成
-        var snapshot = new GamePlayInputSnapshot(
-            handle: _gamepad.leftStick.x.ReadValue() * -1.0f,
-            accelerator: _gamepad.rightTrigger.ReadValue(),
-            brake: _gamepad.leftTrigger.ReadValue(),
-            boost: _gamepad.aButton.wasPressedThisFrame,
-            cameraView: _gamepad.bButton.wasPressedThisFrame
+        var snapshot = new GamePlayInputState(
+            handle: _currentGamepadState.leftStick.x.ReadValue() * -1.0f,
+            accelerator: _currentGamepadState.rightTrigger.ReadValue(),
+            brake: _currentGamepadState.leftTrigger.ReadValue(),
+            boost: _currentGamepadState.aButton.wasPressedThisFrame,
+            cameraView: _currentGamepadState.bButton.wasPressedThisFrame
         );
 
         _gamePlayInputSnapshot = snapshot;
@@ -41,26 +41,34 @@ public class GamePadInput : IInputDevice
     /// </summary>
     public bool IsPressed(UiInputActionID action)
     {
+        bool pressed = false;
+
+        if (_currentGamepadState == null)
+            return false;
+
         switch (action)
         {
-            case UiInputActionID.None:
-                break;
             case UiInputActionID.RIGHT:
+                pressed = _currentGamepadState.dpad.right.isPressed;
                 break;
             case UiInputActionID.LEFT:
+                pressed = _currentGamepadState.dpad.left.isPressed;
                 break;
             case UiInputActionID.UP:
+                pressed = _currentGamepadState.dpad.up.isPressed;
                 break;
             case UiInputActionID.DOWN:
+                pressed = _currentGamepadState.dpad.down.isPressed;
                 break;
             case UiInputActionID.ESC:
+                pressed = _currentGamepadState.startButton.isPressed;
                 break;
+            case UiInputActionID.None:
             default:
                 break;
-
         }
 
-        return false;
+        return pressed;
     }
 
     /// <summary>
@@ -68,26 +76,34 @@ public class GamePadInput : IInputDevice
     /// </summary>
     public bool WasPressedThisFrame(UiInputActionID action)
     {
+        bool pressed = false;
+
+        if (_currentGamepadState == null)
+            return false;
+
         switch (action)
         {
-            case UiInputActionID.None:
-                break;
             case UiInputActionID.RIGHT:
+                pressed = _currentGamepadState.dpad.right.wasPressedThisFrame;
                 break;
             case UiInputActionID.LEFT:
+                pressed = _currentGamepadState.dpad.left.wasPressedThisFrame;
                 break;
             case UiInputActionID.UP:
+                pressed = _currentGamepadState.dpad.up.wasPressedThisFrame;
                 break;
             case UiInputActionID.DOWN:
+                pressed = _currentGamepadState.dpad.down.wasPressedThisFrame;
                 break;
             case UiInputActionID.ESC:
+                pressed = _currentGamepadState.startButton.wasPressedThisFrame;
                 break;
+            case UiInputActionID.None:
             default:
                 break;
-
         }
 
-        return false;
+        return pressed;
     }
 }
 
