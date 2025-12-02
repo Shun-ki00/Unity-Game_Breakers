@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 32842508012279008}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Course
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &32842508012279008
 Transform:
@@ -107,6 +107,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: course_piller
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2a6adf4e6974b2242a3bbb3e87f34daf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2a6adf4e6974b2242a3bbb3e87f34daf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -189,6 +197,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: course_side
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d77f732e5d0102f40abde3ef889bc9f5, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d77f732e5d0102f40abde3ef889bc9f5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -270,6 +286,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae06cb01c2a836f4781b6a7abc97190a, type: 3}
       propertyPath: m_Name
       value: course_curve_sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae06cb01c2a836f4781b6a7abc97190a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae06cb01c2a836f4781b6a7abc97190a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -360,6 +384,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1333703916f98364d9f0381f2d3ae255, type: 3}
       propertyPath: m_Name
       value: course
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1333703916f98364d9f0381f2d3ae255, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1333703916f98364d9f0381f2d3ae255, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
