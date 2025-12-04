@@ -33,8 +33,8 @@ public class KeyboardInput : IInputDevice
             handle: this.GetHandleAxis(),
             accelerator: this.GetAcceleratorAxis(),
             brake: this.GetBrakeAxis(),
-            boost: Input.GetKeyDown(KeyCode.Space),
-            cameraView: Input.GetKeyDown(KeyCode.C)
+            boost: _currentKeyboardState.spaceKey.wasPressedThisFrame,
+            cameraView: _currentKeyboardState.cKey.wasPressedThisFrame
         );
 
         _gamePlayInputSnapshot = snapshot;
@@ -133,9 +133,9 @@ public class KeyboardInput : IInputDevice
     {
         float handle = 0f;
         // 右
-        if(Input.GetKey(KeyCode.RightArrow)) handle = -1f;
+        if(_currentKeyboardState.rightArrowKey.isPressed) handle = -1f;
         // 左
-        if(Input.GetKey(KeyCode.LeftArrow)) handle = 1f;
+        if(_currentKeyboardState.leftArrowKey.isPressed) handle = 1f;
 
         return handle;
     }
@@ -146,7 +146,7 @@ public class KeyboardInput : IInputDevice
     {
         float accelerator = 0f;
         // 上キー
-        if(Input.GetKey(KeyCode.UpArrow)) accelerator = 1f;
+        if(_currentKeyboardState.upArrowKey.isPressed) accelerator = 1f;
 
         return accelerator; 
     }
@@ -157,7 +157,7 @@ public class KeyboardInput : IInputDevice
     {
         float brake = 0f;
         // 上キー
-        if (Input.GetKey(KeyCode.DownArrow)) brake = 1f;
+        if (_currentKeyboardState.downArrowKey.isPressed) brake = 1f;
 
         return brake;
     }

@@ -15,7 +15,7 @@ MonoBehaviour:
   _recoverPower: 2
   _rayLength: 20
   _isHover: 1
-  _hoverHeight: 1
+  _hoverHeight: 2
   _hoverForce: 400
   _damping: 3
   _rotationSpeed: 10
