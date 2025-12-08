@@ -1185,8 +1185,8 @@
     "m_ObjectId": "10a6bb19e2e645f6b3bb28e98f13b5ad",
     "m_Title": "SurfaceMovement",
     "m_Position": {
-        "x": -1732.0,
-        "y": -1315.0
+        "x": -1731.9998779296875,
+        "y": -1316.800048828125
     }
 }
 
@@ -6379,8 +6379,8 @@
     "m_ObjectId": "ec160ff133d248c6a32f7193fcf2583b",
     "m_Title": "Distortion Effect",
     "m_Position": {
-        "x": -1627.0,
-        "y": 605.0
+        "x": -1627.2001953125,
+        "y": 603.199951171875
     }
 }
 
@@ -6572,8 +6572,8 @@
     "m_ObjectId": "f6d21ff5c75d41f0805de668bbe1e11f",
     "m_Title": "ScrollingTexture",
     "m_Position": {
-        "x": -1783.0,
-        "y": -499.0
+        "x": -1783.2001953125,
+        "y": -500.79998779296877
     }
 }
 
