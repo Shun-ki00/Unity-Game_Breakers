@@ -64,7 +64,7 @@ public class VehiclePhysicsModule : IVehicleModule, IResettableVehicleModule<Veh
         _gravityAlignment = new GravityAlignment(_vehicleController.gameObject.GetComponent<Rigidbody>());
         _hoverBoard = new HoverBoard(_transform , this);
         _orientationStabilizer = new OrientationStabilizer(_transform , this);
-        _slipControl = new SlipControl(_vehicleController.gameObject.GetComponent<Rigidbody>(), LateralGrip);
+        _slipControl = new SlipControl(_vehicleController.gameObject.GetComponent<Rigidbody>());
 
         // 重力の設定値を更新
         _gravityAlignment._rayLength = RayLength;
@@ -79,7 +79,8 @@ public class VehiclePhysicsModule : IVehicleModule, IResettableVehicleModule<Veh
         // 姿勢制御の設定値を更新
         _orientationStabilizer.rotationSpeed = RotationSpeed;
 
-     
+        // 横滑り制御の設定値を更新
+        _slipControl.LateralGrip = LateralGrip;
     }
     /// <summary> 開始処理 </summary>
     public void Start()
